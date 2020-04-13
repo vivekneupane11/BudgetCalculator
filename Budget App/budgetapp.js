@@ -181,7 +181,7 @@ return activitydata;
         if(element == null){
             return;
         }
-        DOM.activitylist.innerHTML += ` <li  id="list${i}" class="${element.ActivityType}list  activitylist"><i  class="fa fa-${element.ActivityCategory}"></i> <p id="edit"> ${element.Description}</p> <strong> $ ${element.ActivityAmount} </strong><i onclick="delete(${element.id})" id="edit" class= "fa fa-times-circle"></li>`;
+        DOM.activitylist.innerHTML += ` <li  id="list${i}" class="${element.ActivityType}list  activitylist"><i  class="fa fa-${element.ActivityCategory}"></i> <p id="edit"> ${element.Description}</p> <strong> $ ${element.ActivityAmount} </strong><i onclick="deleteData(${element.id})" id="edit" class= "fa fa-times-circle"></li>`;
        
     });
  
@@ -225,7 +225,7 @@ if(localStorage.length > 0){
 }
 
 
-function delete(id){
+function deleteData(id){
     let todelete = confirm("Are you sure to delete?");
     if(todelete){
         localStorage.removeItem('ActivityListNo:'+id);

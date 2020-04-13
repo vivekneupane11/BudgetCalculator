@@ -3,7 +3,7 @@ let activitydata= [];
 
 const DOM = (()=>{
     var time = new Date();
-    var month = time.getMonth();
+    var month = time.getMonth(); //0-11
 var monthParagraphDOM = document.getElementById('monthpara');
 
 putmonthtoParagraph(month,monthParagraphDOM);
@@ -181,7 +181,7 @@ return activitydata;
         if(element == null){
             return;
         }
-        DOM.activitylist.innerHTML += ` <li  id="list${i}" class="${element.ActivityType}list  activitylist"><i  class="fa fa-${element.ActivityCategory}"></i> <p id="edit"> ${element.Description}</p> <strong> $ ${element.ActivityAmount} </strong><i onclick="edit(${element.id})" id="edit" class= "fa fa-times-circle"></li>`;
+        DOM.activitylist.innerHTML += ` <li  id="list${i}" class="${element.ActivityType}list  activitylist"><i  class="fa fa-${element.ActivityCategory}"></i> <p id="edit"> ${element.Description}</p> <strong> $ ${element.ActivityAmount} </strong><i onclick="delete(${element.id})" id="edit" class= "fa fa-times-circle"></li>`;
        
     });
  
@@ -225,7 +225,7 @@ if(localStorage.length > 0){
 }
 
 
-function edit(id){
+function delete(id){
     let todelete = confirm("Are you sure to delete?");
     if(todelete){
         localStorage.removeItem('ActivityListNo:'+id);

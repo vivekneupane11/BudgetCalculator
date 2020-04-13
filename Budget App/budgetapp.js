@@ -144,8 +144,24 @@ handleLocalStorage(i, {
 
 
 function handleLocalStorage(length,ActivityList){
-const stringActivityList = JSON.stringify(ActivityList);
 
+let x = Object.keys(localStorage);
+let count = Number(x[0]);
+for(i=1;i<=x.length;i++){
+    if(Number(x[i]) > count ){
+        count = Number(x[i]);
+    }
+    
+
+}
+for(i=0;i<=x.length;i++){
+    if( Number(length+1) == Number(x[i]) ){
+       length = length+count;
+       ActivityList.id = Number(length+1); 
+    }
+
+}
+const stringActivityList = JSON.stringify(ActivityList);
 localStorage.setItem((length+1) , stringActivityList);
 
 }

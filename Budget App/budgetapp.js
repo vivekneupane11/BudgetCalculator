@@ -146,22 +146,31 @@ handleLocalStorage(i, {
 function handleLocalStorage(length,ActivityList){
 const stringActivityList = JSON.stringify(ActivityList);
 
-localStorage.setItem('ActivityListNo:'+(length+1) , stringActivityList);
+localStorage.setItem((length+1) , stringActivityList);
 
 }
 
 
 function getLocalStorageData(){
     activitydata = [];
- 
+
     if(localStorage.length == 0){
         return [];
     }
-    for(i=0;i<=localStorage.length;i++){
-       
-        activitydata.push(JSON.parse(localStorage.getItem('ActivityListNo:'+i))); 
+    let x = Object.keys(localStorage);
+    console.log(x.length);
+    let length = Number(x[0]);
+    for(i=1;i<=x.length;i++){
+        if(Number(x[i]) > length ){
+            length = Number(x[i]);
+        }
+    
     }
-
+    console.log(length);
+    for(i=1;i<=length;i++){
+       
+        activitydata.push(JSON.parse(localStorage.getItem(i))); 
+    }
 
 return activitydata;
 
@@ -174,6 +183,7 @@ return activitydata;
 
 /**Create Activity List */
  function createActivityList(){
+ 
  let data =  getLocalStorageData();
     DOM.activitylist.innerHTML = "";
     
@@ -225,14 +235,11 @@ if(localStorage.length > 0){
 }
 
 
-//There seems to be bug on deleting.You can solve it or simply remove all the code below
-//and aslo dont forget to remove the icon above as well {fa fa-times-circle}
 function deleteData(id){
     let todelete = confirm("Are you sure to delete?");
     if(todelete){
-        localStorage.removeItem('ActivityListNo:'+id);
-        createActivityList();
-        changeDOMHeaderAmount()
+        localStorage.removeItem(id);
+        location.reload();
     }
     else{
         return;

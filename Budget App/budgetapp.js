@@ -225,6 +225,8 @@ if(localStorage.length > 0){
 }
 
 
+//There seems to be bug on deleting.You can solve it or simply remove all the code below
+//and aslo dont forget to remove the icon above as well {fa fa-times-circle}
 function deleteData(id){
     let todelete = confirm("Are you sure to delete?");
     if(todelete){

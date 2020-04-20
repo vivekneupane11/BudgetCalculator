@@ -110,11 +110,11 @@ const UIController = (()=>{
         showText = !showText;
      }
      else{
-        DOM.TotalBalance.innerHTML = "$0.00";
+        changeDOMHeaderAmount();
         DOM.TotalBalance.classList.remove('hidetext');
-        DOM.Income.innerHTML = "$0.00";
+     
         DOM.Income.classList.remove('hidetext');
-        DOM.Expense.innerHTML = "$0.00";
+      
         DOM.Expense.classList.remove('hidetext');
         showText = !showText;
      }
